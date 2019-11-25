@@ -2,14 +2,16 @@
   .header
     .left-header
       .left-header__current-group
-        ooo
+        =@group.name
       %ul.left-header__members
         Member：
         %li.member
-        ppp
+          -@group.group_users.each do |group_user|
+            =group_user.user.name
     .right-header
-      .right-header__button Edit
-
+      .right-header__button 
+        =link_to edit_group_path(@group.id) do
+          Edit
   .messages
     .message
       .upper-message
@@ -24,7 +26,7 @@
     %input#message_content.form__message{ name: "message[content]", placeholder: "type a message", type: "text"}
     .form__mask
       %label.form__mask__image{for: "message_image"}
-        =fa_icon 'image'         
+        =icon('fas','image',class: 'icon')        
       %input#message_image.hidden{ name:"message[image]", type: "file"}
     %input.form__submit{ name: "commit", type: "submit", value: "Send"}
   
