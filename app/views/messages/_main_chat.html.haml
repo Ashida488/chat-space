@@ -2,34 +2,24 @@
   .header
     .left-header
       .left-header__current-group
-        =@group.name
+        = @group.name
       %ul.left-header__members
         Member：
         %li.member
-          -@group.group_users.each do |group_user|
-            =group_user.user.name
+          - @group.group_users.each do |group_user|
+            = group_user.user.name
     .right-header
       .right-header__button 
-        =link_to edit_group_path(@group.id) do
+        = link_to edit_group_path(@group.id) do
           Edit
   .messages
-    .message
-      .upper-message
-        .upper-message__user-name
-          ppp
-        .upper-message__date
-          2019/11/01 06:21
-      .text-message
-        %p.text-message__content
-          おはようございます。
+    = render @messages
+
   .form
-    %input#message_content.form__message{ name: "message[content]", placeholder: "type a message", type: "text"}
-    .form__mask
-      %label.form__mask__image{for: "message_image"}
-        =icon('fas','image',class: 'icon')        
-      %input#message_image.hidden{ name:"message[image]", type: "file"}
-    %input.form__submit{ name: "commit", type: "submit", value: "Send"}
-  
-     
-    
-   
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = icon('fas','image',class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'send', class: 'form__submit'
