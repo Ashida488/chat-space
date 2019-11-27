@@ -13,15 +13,8 @@
         =link_to edit_group_path(@group.id) do
           Edit
   .messages
-    .message
-      .upper-message
-        .upper-message__user-name
-          ppp
-        .upper-message__date
-          2019/11/01 06:21
-      .text-message
-        %p.text-message__content
-          おはようございます。
+    = render @messages
+    
   .form
      = form_for [@group, @message] do |f|
        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
