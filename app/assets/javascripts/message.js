@@ -2,10 +2,10 @@ $(function() {
 
   function buildHTML(message) {
     //条件分岐
-    var messageContent = message.content ? message.content :"";
-    var image = message.image_url ? `<img src= "${message.image_url}">`:"";
+    var content = message.content ?`${message.content}`:"";
+    var image = message.image ? `<img src= "${message.image}">`:"";
     //messageのhtml
-    var html = `<div class ="message">
+    var html = `<div class ="message" data-id=${message.id}>
                   <div class ="upper-message">
                     <div class ="upper-message__user-name">
                       ${message.user_name}
@@ -16,7 +16,7 @@ $(function() {
                   </div>
                   <div class ="text-message">
                     <p class ="text-message__content">
-                        ${messageContent}
+                        ${content}
                     </p>
                         ${image}
                   </div>
