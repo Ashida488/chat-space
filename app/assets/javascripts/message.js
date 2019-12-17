@@ -39,7 +39,6 @@ $(function() {
       dataType: 'json',
       processData: false,
       contentType: false
-
     })
     //非同期通信成功時
     .done(function(data) {
@@ -64,19 +63,16 @@ $(function() {
         data:{id: last_message_id}
       })
       .done(function(messages){
-        
         var insertHTML = '';
         messages.forEach(function(message) {
-          insertHTML += buildHTML(message);
+          insertHTML = buildHTML(message);
         }) 
         $('.messages').append(insertHTML);
           $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight},'fast');
-       }
       })
       .fail(function() {
         alert ('自動更新に失敗しました');
       });
-     
     }
   };
   setInterval(reloadMessages, 7000);
