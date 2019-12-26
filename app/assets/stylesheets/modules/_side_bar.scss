@@ -1,10 +1,8 @@
 .chat-side {
-  position:fixed;
   color: $white;
   width: 300px;
   float: left;
-  .side-header {
-    
+  .side-header {   
      height: 100px;
      background-color: $dark_blue;
      display: flex;
@@ -32,7 +30,7 @@
  .groups {
    background-color: $light_dark_blue;
    height: calc(100vh - 100px);
-   padding: 20px 20px 0 20px;
+   padding: 20px 20px 0 ;
    overflow: scroll;
    a, a:hover, a:visited{
     color: $white;
